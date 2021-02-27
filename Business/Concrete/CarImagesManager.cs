@@ -90,7 +90,7 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfCarImageNull(int id)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\Images\carImages\logo.jpg");
+            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\WebAPI\wwwroot\Images\CarImages\logo.jpg");
             var result = _carImageDAL.GetAll(c => c.CarId == id).Any();
             if (!result)
             {

@@ -44,9 +44,10 @@ namespace Core.Utilities.Helpers
         {
             FileInfo ff = new FileInfo(file.FileName);
             string fileExtension = ff.Extension;
+            string path = Environment.CurrentDirectory + @"\wwwroot\Images\CarImages";
             var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + "_"
             + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + "_" + DateTime.Now.Millisecond + fileExtension;
-            string result = $@"{newPath}";
+            string result = $@"{path}\{newPath}";
             return result;
         }
     }

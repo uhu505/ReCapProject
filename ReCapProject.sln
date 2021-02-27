@@ -13,12 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{13A36439-4089-427B-9519-EAEF3E00F0D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{0604AD5D-B173-47D2-A648-D41D4A0CE195}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "carImages", "carImages", "{B04848E9-3062-483C-A09B-E76A43317D70}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive\Resimler\logo.jpg = ..\..\..\OneDrive\Resimler\logo.jpg
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{C326BC6D-F151-4E45-85A0-A67364E54F18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,12 +41,13 @@ Global
 		{13A36439-4089-427B-9519-EAEF3E00F0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13A36439-4089-427B-9519-EAEF3E00F0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13A36439-4089-427B-9519-EAEF3E00F0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C326BC6D-F151-4E45-85A0-A67364E54F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C326BC6D-F151-4E45-85A0-A67364E54F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C326BC6D-F151-4E45-85A0-A67364E54F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C326BC6D-F151-4E45-85A0-A67364E54F18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B04848E9-3062-483C-A09B-E76A43317D70} = {0604AD5D-B173-47D2-A648-D41D4A0CE195}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEAE4AC8-8178-4C67-A858-F539C4B3E549}
