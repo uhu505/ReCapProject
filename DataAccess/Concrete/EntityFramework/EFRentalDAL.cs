@@ -1,18 +1,18 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 using Entities.DTOs;
-using System.Collections.Generic;
-using System.Linq;
-using DataAccess.Concrete.EntityFramework.Contexts;
 
-namespace DataAccess.Concrete.Entity_Framework
+namespace DataAccess.Concrete.EntityFramework
 {
     public class EFRentalDAL : EFEntityRepositoryBase<Rental, ReCapDbContext>, IRentalDAL
     {
         public List<RentalDetailDto> GetRentalDetails()
         {
-            using (ReCapDbContext context = new ReCapDbContext())
+            using (var context = new ReCapDbContext())
             {
                 var result = from rental in context.Rentals
                              join car in context.Cars
@@ -32,7 +32,6 @@ namespace DataAccess.Concrete.Entity_Framework
                                  RentDate = rental.RentDate,
                                  ReturnDate = rental.ReturnDate
                              };
-
                 return result.ToList();
             }
         }

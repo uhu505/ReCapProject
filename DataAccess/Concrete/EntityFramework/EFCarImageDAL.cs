@@ -1,9 +1,9 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using DataAccess.Concrete.EntityFramework.Contexts;
+using Entities.Concrete;
 
-namespace DataAccess.Concrete.Entity_Framework
+namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCarImageDAL : EFEntityRepositoryBase<CarImage, ReCapDbContext>, ICarImageDAL
     {

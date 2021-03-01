@@ -1,7 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Core.Utilities.Business
 {
@@ -9,14 +7,7 @@ namespace Core.Utilities.Business
     {
         public static IResult Run(params IResult[] logics)
         {
-            foreach (var logic in logics)
-            {
-                if (!logic.Success)
-                {
-                    return logic;
-                }
-            }
-            return null;
+            return logics.FirstOrDefault(logic => !logic.Success);
         }
     }
 }

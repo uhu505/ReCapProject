@@ -3,7 +3,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 
-namespace DataAccess.Concrete.Entity_Framework
+namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCustomerDAL : EFEntityRepositoryBase<Customer, ReCapDbContext>, ICustomerDAL
     {

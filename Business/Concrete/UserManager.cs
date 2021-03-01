@@ -4,8 +4,9 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using System.Collections.Generic;
+using Business.Constants;
+using Core.Entities.Concrete;
 
 namespace Business.Concrete
 {
@@ -38,7 +39,12 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<User>> GetUsers()
+        public IDataResult<User> GetUsers(string email)
+        {
+            return new SuccessDataResult<User>(_userDAL.Get(c => c.Email == email));
+        }
+
+        public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDAL.GetAll());
         }
@@ -46,6 +52,19 @@ namespace Business.Concrete
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDAL.Get(c => c.Id == id));
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDAL.GetClaims(user));
+        }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            var get = _userDAL.GetAll(u => u.Email == email);
+            var emailCheck = get.Count;
+
+            return emailCheck > 0 ? null : new ErrorDataResult<User>();
         }
     }
 }

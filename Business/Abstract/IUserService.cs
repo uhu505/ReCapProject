@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Results.Abstract;
-using Entities.Concrete;
 using System.Collections.Generic;
+using Core.Entities.Concrete;
 
 namespace Business.Abstract
 {
@@ -12,7 +12,13 @@ namespace Business.Abstract
 
         IResult Update(User user);
 
-        IDataResult<List<User>> GetUsers();
+        IDataResult<User> GetUsers(string email);
+
+        IDataResult<List<User>> GetAll();
+
+        IDataResult<List<OperationClaim>> GetClaims(User user);
+
+        IDataResult<User> GetByMail(string email);
 
         IDataResult<User> GetById(int id);
     }

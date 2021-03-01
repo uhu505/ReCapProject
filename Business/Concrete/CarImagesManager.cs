@@ -77,7 +77,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id));
         }
 
-        //business rules
         private IResult CheckImageLimitExceeded(int carId)
         {
             var carImagecount = _carImageDAL.GetAll(p => p.CarId == carId).Count;
@@ -103,13 +102,12 @@ namespace Business.Concrete
         {
             try
             {
-                File.Delete(carImage.ImagePath);
+                FileHelper.Delete(carImage.ImagePath);
             }
             catch (Exception exception)
             {
                 return new ErrorResult(exception.Message);
             }
-
             return new SuccessResult();
         }
     }

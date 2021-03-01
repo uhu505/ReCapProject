@@ -8,6 +8,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using Business.BusinessAspects.Autofac;
 
 namespace Business.Concrete
 {
@@ -20,6 +21,7 @@ namespace Business.Concrete
             _carDAL = carDAL;
         }
 
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {

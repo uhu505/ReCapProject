@@ -1,9 +1,9 @@
 ﻿using Castle.DynamicProxy;
-using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Interceptors;
 using FluentValidation;
 using System;
 using System.Linq;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 
 namespace Core.Aspects.Autofac.Validation
 {
@@ -17,7 +17,6 @@ namespace Core.Aspects.Autofac.Validation
             {
                 throw new Exception("Not a Validator Type");
             }
-
             _validatorType = validatorType;
         }
 

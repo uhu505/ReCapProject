@@ -1,5 +1,5 @@
-﻿using Core.Entities;
-using System;
+﻿using System;
+using Core.Entities.Abstract;
 
 namespace Entities.DTOs
 {
