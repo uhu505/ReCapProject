@@ -61,10 +61,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetByMail(string email)
         {
-            var get = _userDAL.GetAll(u => u.Email == email);
-            var emailCheck = get.Count;
-
-            return emailCheck > 0 ? null : new ErrorDataResult<User>();
+            return _userDAL.Get(user => user.Email == email) == null ? new ErrorDataResult<User>() : null;
         }
     }
 }
