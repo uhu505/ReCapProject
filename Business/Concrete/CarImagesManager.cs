@@ -28,7 +28,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
+            var result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
             if (result != null)
             {
                 return result;
@@ -42,7 +42,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CarImageDelete(carImage));
+            var result = BusinessRules.Run(CarImageDelete(carImage));
             if (result != null)
             {
                 return result;
@@ -89,7 +89,7 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfCarImageNull(int id)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\WebAPI\wwwroot\Images\CarImages\logo.jpg");
+            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\WebAPI\wwwroot\Images\CarImages\logo.jpg");
             var result = _carImageDAL.GetAll(c => c.CarId == id).Any();
             if (!result)
             {
