@@ -6,6 +6,7 @@ using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using System.Collections.Generic;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Entities.Concrete;
 
 namespace Business.Concrete
@@ -21,6 +22,7 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(UserValidator))]
         [CacheRemoveAspect("IUserService.Get")]
+        [PerformanceAspect(5)]
         public IResult Add(User User)
         {
             _userDAL.Add(User);
@@ -54,6 +56,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
+        [PerformanceAspect(10)]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDAL.GetAll());

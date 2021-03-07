@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Core.Aspects.Autofac.Performance;
 
 namespace Core.Utilities.Interceptors
 {
