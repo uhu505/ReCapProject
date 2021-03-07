@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -22,6 +23,7 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
+        [CacheRemoveAspect("IUserService.Get")]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             HashingHelper.CreatePasswordHash(password, out var passwordHash, out var passwordSalt);

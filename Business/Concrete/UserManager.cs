@@ -5,7 +5,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using System.Collections.Generic;
-using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Entities.Concrete;
 
 namespace Business.Concrete
@@ -20,12 +20,14 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User User)
         {
             _userDAL.Add(User);
             return new SuccessResult();
         }
 
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Delete(User User)
         {
             _userDAL.Delete(User);
@@ -33,6 +35,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User User)
         {
             _userDAL.Update(User);
@@ -50,16 +53,19 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(data: check);
         }
 
+        [CacheAspect]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDAL.GetAll());
         }
 
+        [CacheAspect]
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(data: _userDAL.Get(filter: user => user.Id == id));
         }
 
+        [CacheAspect]
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaim>>(_userDAL.GetClaims(user));
