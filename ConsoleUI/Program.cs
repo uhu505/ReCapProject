@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using static System.Console;
 
 namespace ConsoleUI
 {
@@ -7,9 +7,18 @@ namespace ConsoleUI
     {
         private static void Main()
         {
-            var sourcePath = Path.GetTempFileName();
-            Console.WriteLine(sourcePath);
-            Console.ReadLine();
+            string check;
+            check = "a";
+            if (check != null)
+            {
+                WriteLine("if içi");
+                ReadLine();
+            }
+            else
+            {
+                WriteLine("if dışı");
+                ReadLine();
+            }
         }
     }
 }

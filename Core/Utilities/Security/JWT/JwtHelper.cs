@@ -52,13 +52,13 @@ namespace Core.Utilities.Security.JWT
             return jwt;
         }
 
-        private static IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
+        private static IEnumerable<Claim> SetClaims(User user, IEnumerable<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
-            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
+            claims.AddRoles(operationClaims.Select(OperationClaim => OperationClaim.Name).ToArray());
             return claims;
         }
     }

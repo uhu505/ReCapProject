@@ -41,7 +41,13 @@ namespace Business.Concrete
 
         public IDataResult<User> GetUsers(string email)
         {
-            return new SuccessDataResult<User>(_userDAL.Get(c => c.Email == email));
+            var check = _userDAL.Get(filter: user => user.Email == email);
+            if (check == null)
+            {
+                return new ErrorDataResult<User>(data: check);
+            }
+
+            return new SuccessDataResult<User>(data: check);
         }
 
         public IDataResult<List<User>> GetAll()
@@ -51,7 +57,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userDAL.Get(c => c.Id == id));
+            return new SuccessDataResult<User>(data: _userDAL.Get(filter: user => user.Id == id));
         }
 
         public IDataResult<List<OperationClaim>> GetClaims(User user)
@@ -61,7 +67,13 @@ namespace Business.Concrete
 
         public IDataResult<User> GetByMail(string email)
         {
-            return _userDAL.Get(user => user.Email == email) == null ? new ErrorDataResult<User>() : null;
+            var check = _userDAL.Get(filter: user => user.Email == email);
+            if (check == null)
+            {
+                return new ErrorDataResult<User>(check);
+            }
+
+            return new SuccessDataResult<User>(check);
         }
     }
 }
