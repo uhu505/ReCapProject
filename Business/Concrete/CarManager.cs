@@ -9,6 +9,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using Business.BusinessAspects.Autofac;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -69,6 +70,16 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDAL.GetAll(c => c.ColorId == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDAL.GetCarDetailDtos());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarByDetails(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDAL.GetCarDetailDtos(filter: car => car.BrandId == brandId));
         }
     }
 }

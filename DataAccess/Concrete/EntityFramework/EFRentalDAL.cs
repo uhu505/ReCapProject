@@ -26,7 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new RentalDetailDto
                              {
                                  RentalID = rental.Id,
-                                 CarName = brand.Name,
+                                 CarName = brand.BrandName,
                                  CompanyName = customer.CompanyName,
                                  UserName = user.FirstName + " " + user.LastName,
                                  RentDate = rental.RentDate,

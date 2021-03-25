@@ -22,12 +22,8 @@ namespace Core.Utilities.Security.Hashing
                 var passwordBytes = Encoding.UTF8.GetBytes(password);
                 var computedHash = hmac.ComputeHash(passwordBytes);
 
-                if (computedHash.Where((t, i) => t != passwordHash[i]).Any())
-                {
-                    return false;
-                }
+                return !computedHash.Where((t, i) => t != passwordHash[i]).Any();
             }
-            return true;
         }
     }
 }
