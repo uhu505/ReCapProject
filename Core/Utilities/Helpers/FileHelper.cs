@@ -16,9 +16,9 @@ namespace Core.Utilities.Helpers
                     file.CopyTo(stream);
                 }
             }
-            var result = NewPath(file);
-            File.Move(sourcepath, result);
-            return result;
+            var (newPath, path2) = NewPath(file);
+            File.Move(sourcepath, newPath);
+            return path2;
         }
 
         public static void Delete(string path)
@@ -28,19 +28,19 @@ namespace Core.Utilities.Helpers
 
         public static string Update(string sourcePath, IFormFile file)
         {
-            var result = NewPath(file);
+            var (newPath, path2) = NewPath(file);
             if (sourcePath.Length > 0)
             {
-                using (var stream = new FileStream(result, FileMode.Create))
+                using (var stream = new FileStream(newPath, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
             }
             File.Delete(sourcePath);
-            return result;
+            return path2;
         }
 
-        public static string NewPath(IFormFile file)
+        public static (string newPath, string Path2) NewPath(IFormFile file)
         {
             var ff = new FileInfo(file.FileName);
             var fileExtension = ff.Extension;
@@ -48,7 +48,7 @@ namespace Core.Utilities.Helpers
             var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + "_"
             + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + "_" + DateTime.Now.Millisecond + fileExtension;
             var result = $@"{path}\{newPath}";
-            return result;
+            return (result, $"\\Images\\CarImages\\{newPath}");
         }
     }
 }

@@ -71,6 +71,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDAL.GetAll());
         }
 
+        public IDataResult<List<CarImage>> GetCarById(int carId)
+        {
+            return new SuccessDataResult<List<CarImage>>(_carImageDAL.GetAll(carImage => carImage.CarId == carId));
+        }
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<List<CarImage>> GetImagesByCarId(int id)
         {
@@ -98,7 +103,7 @@ namespace Business.Concrete
             return _carImageDAL.GetAll(p => p.CarId == id);
         }
 
-        private IResult CarImageDelete(CarImage carImage)
+        private static IResult CarImageDelete(CarImage carImage)
         {
             try
             {
