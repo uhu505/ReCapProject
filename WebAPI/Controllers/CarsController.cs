@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpDelete("delete")]
@@ -126,6 +126,17 @@ namespace WebAPI.Controllers
         public IActionResult GetCarDetails(int brandId)
         {
             var result = _carService.GetCarByDetails(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getallselectedfilteritem")]
+        public IActionResult GetCarsByBrandIdAndColorId(int brandId, int colorId)
+        {
+            var result = _carService.GetCarsByBrandIdAndColorId(brandId, colorId);
             if (result.Success)
             {
                 return Ok(result);

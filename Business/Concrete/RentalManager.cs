@@ -53,10 +53,6 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
-            if (DateTime.Now.Hour == 02)
-            {
-                return new ErrorDataResult<List<RentalDetailDto>>(Messages.MaintenanceTime);
-            }
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDAL.GetRentalDetails());
         }
     }
