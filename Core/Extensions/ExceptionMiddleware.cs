@@ -33,7 +33,6 @@ namespace Core.Extensions
         {
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
             var message = "Internal Server Error";
             if (e.GetType() == typeof(ValidationException))
             {
